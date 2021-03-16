@@ -9,6 +9,9 @@ depends = ["git"]
 
 [default.variables]
 
+[bat.files]
+bat = "~/.config/bat/config"
+
 [git.files]
 gitconfig = "~/.gitconfig"
 
@@ -26,4 +29,7 @@ vim_plug = "~/.local/share/nvim/site/autoload/plug.vim"
 
 [tmux.files]
 tmux_conf = "~/.tmux.conf"
+
+[ripgrep.files]
+ripgrep = "~/.config/ripgrep/.ripgreprc"
 

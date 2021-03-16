@@ -1,0 +1,12 @@
+# Smart Case as the default (case insensitive unless pattern contains any uppercase letters)
+--smart-case
+
+# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
+--max-columns=150
+--max-columns-preview
+
+# Types I care about
+--type-add
+web:*.{html,css,js,ts,vue,jsx,tsx,less,sass,scss,jsf,jsp}*
+--type-add
+props:*.{properties,conf,config,yaml,yml,json,props}*
