@@ -1,0 +1,12 @@
+[init]
+	defaultBranch = main
+[user]
+	name = William McGann
+    email = contact@williammcgann.com
+[alias]
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg = !"git lg1"
+    panic = !tar cvf ~/git_panic.tar .
+    lc = log ORIG_HEAD.. --stat --no-merges
+    diffstat=diff --stat -r
+

@@ -1,0 +1,26 @@
+# Helpers are user-defined functions that can be executed inside templates.
+# This section is optional.
+[helpers]
+
+[default]
+depends = ["git"]
+
+[default.files]
+
+[default.variables]
+
+[git.files]
+gitconfig = "~/.gitconfig"
+
+[bash.files]
+bash_aliases = "~/.bash_aliases"
+bashrc = "~/.bashrc"
+
+[vim.files]
+vimrc = "~/.vimrc"
+vim_plug = "~/.vim/autoload/plug.vim"
+
+[nvim.files]
+vimrc = "~/.config/nvim/init.vim"
+vim_plug = "~/.local/share/nvim/site/autoload/plug.vim"
+
