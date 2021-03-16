@@ -1,0 +1,27 @@
+unbind C-b                    # Free the original prefix binding
+set -g prefix C-a             # Change prefix from C-b to C-a
+set -g mouse on               # Allow mouse drags to enter copy mode and select text
+
+set -g default-terminal "xterm-256color"
+set -g allow-rename off
+
+# Reload alias
+bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+
+# Splits should be more sane
+unbind '"'
+unbind '%'
+bind | split-window -h
+bind - split-window -v
+
+# ctrl+shift+(up/down/left/right) to resize pane
+bind-key -n C-S-up resize-pane -U 5
+bind-key -n C-S-down resize-pane -D 5
+bind-key -n C-S-left resize-pane -L 10
+bind-key -n C-S-right resize-pane -R 10
+
+# meta+(up/down/left/right) to switch panes
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R

@@ -24,3 +24,6 @@ vim_plug = "~/.vim/autoload/plug.vim"
 vimrc = "~/.config/nvim/init.vim"
 vim_plug = "~/.local/share/nvim/site/autoload/plug.vim"
 
+[tmux.files]
+tmux_conf = "~/.tmux.conf"
+
