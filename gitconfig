@@ -9,4 +9,8 @@
     panic = !tar cvf ~/git_panic.tar .
     lc = log ORIG_HEAD.. --stat --no-merges
     diffstat=diff --stat -r
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
 
