@@ -19,7 +19,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND+;}history -a"
 # 256 color code (replace ### with color code): \[\033[38;5;###m\]
 _pbg="\[$(tput setaf 240)\]"
 _pfg="\[$(tput setaf 248)\]"
-export PS1="${_pbg}[${_pfg}\u@\H${_pbg}]-${_pbg}[${_pfg}\t${_pbg}]-[${_pfg}\!${_pbg}]-[${_pfg}\w${_pbg}]\n\\$ $(tput sgr0)"
+export PS1="${_pbg}[${_pfg}\u${_pbg}@${_pfg}\H${_pbg} ${_pfg}\w${_pbg}]${_pfg}\\$ $(tput sgr0)"
 
 # Completions
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion

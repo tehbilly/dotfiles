@@ -3,7 +3,7 @@
 [helpers]
 
 [default]
-depends = ["git"]
+depends = ["bash","git"]
 
 [default.files]
 
