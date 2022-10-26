@@ -19,13 +19,11 @@ export PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND+;}history -a"
 # 256 color code (replace ### with color code): \[\033[38;5;###m\]
 _pbg="\[$(tput setaf 240)\]"
 _pfg="\[$(tput setaf 248)\]"
-export PS1="${_pbg}[${_pfg}\u${_pbg}@${_pfg}\H${_pbg} ${_pfg}\w${_pbg}]${_pfg}\\$ $(tput sgr0)"
+_reset="\[$(tput sgr0)\]"
+export PS1="${_pbg}[${_pfg}\u${_pbg}@${_pfg}\H${_pbg} ${_pfg}\w${_pbg}]${_pfg}\\$ ${_reset}"
 
 # Completions
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
-
-# TODO: Define this
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # Make less use lesspipe if available
 if command -v lesspipe.sh >/dev/null 2>&1; then
@@ -67,6 +65,9 @@ fi
 
 # Configuration file for ripgrep must be specified in an environment variable
 export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep/.ripgreprc"
+
+# Add our fancy aliases
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # If we have pdedupe available, use it to clean up our PATH
 # -e excludes paths that are added but don't exist

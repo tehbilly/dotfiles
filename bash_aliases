@@ -28,21 +28,12 @@ if command -v bat >/dev/null 2>&1; then
 fi
 
 # Directory listing
-if command -v exa >/dev/null 2>&1; then
+if command -v lsd >/dev/null 2>&1; then
+    alias ls="lsd"
+    alias ll="lsd -hal --icon=never"
+elif command -v exa >/dev/null 2>&1; then
 	alias ls="exa"
-	alias ll="exa -lag"
+	alias ll="exa -lagh"
 else
     alias ll="ls -hal"
 fi
-
-# Java version management for MacOS
-if [[ "$(uname)" == "Darwin" ]]; then
-    export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-    export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-    export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
-
-    alias java8='export JAVA_HOME=$JAVA_8_HOME'
-    alias java11='export JAVA_HOME=$JAVA_11_HOME'
-    alias java12='export JAVA_HOME=$JAVA_12_HOME'
-fi
-

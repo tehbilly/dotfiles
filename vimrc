@@ -4,10 +4,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-git'
 Plug 'chriskempson/base16-vim'
 Plug 'tmux-plugins/vim-tmux'
-" Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'LnL7/vim-nix'
+Plug 'NoahTheDuke/vim-just'
 
 call plug#end()
 
