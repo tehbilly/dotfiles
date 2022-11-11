@@ -1,0 +1,8 @@
+$include /etc/inputrc
+
+# Allow tab-completion to single-complete on symlinked directories
+set mark-symlinked-directories on
+
+# Allow ctrl-left/right navigation in readline
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word

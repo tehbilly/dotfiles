@@ -35,6 +35,11 @@ fi
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh"
 [[ -s "${BASE16_SHELL}" ]] && source "${BASE16_SHELL}"
 
+# Add GOBIN to path if directory exists
+if [[ -e "$HOME/go/bin" ]]; then
+    export PATH="$HOME/go/bin:$PATH"
+fi
+
 # Add cargo to path if directory exists
 if [[ -e "$HOME/.cargo/bin" ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
