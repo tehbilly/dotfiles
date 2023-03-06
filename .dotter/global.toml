@@ -18,6 +18,7 @@ bat = "~/.config/bat/config"
 
 [git.files]
 gitconfig = "~/.gitconfig"
+cargo_config = "~/.cargo/config"
 
 [inputrc.files]
 inputrc = "~/.inputrc"
