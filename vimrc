@@ -10,6 +10,17 @@ Plug 'scrooloose/nerdtree'
 Plug 'LnL7/vim-nix'
 Plug 'NoahTheDuke/vim-just'
 
+Plug 'neovim/nvim-lspconfig'
+" Plug 'j-hui/fidget.nvim'
+" Plug 'hrsh7th/nvim-cmp'
+" Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/cmp-path'
+" Plug 'hrsh7th/cmp-buffer'
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 
 " Basic setup
@@ -18,8 +29,10 @@ filetype off
 
 filetype plugin indent on
 
+let base16colorspace=256
+colorscheme base16-tomorrow-night-eighties
+
 if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
     source ~/.vimrc_background
 endif
 
@@ -41,10 +54,13 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vimrc<cr>
+map <leader>e :e! ~/.config/nvim/init.vim<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vimrc
+autocmd! bufwritepost init.vim source ~/.config/nvim/init.vim
+
+" Manually reload vimrc
+map <leader>rr source ~/.config/nvim/init.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -99,8 +115,13 @@ set tw=500
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set font and shell
-set gfn=Monospace\ 10
+" GUI Font Settings
+if has('gui_win32') || has('gui_win64') || has('gui_macvim')
+    set guifont=Cascadia\ Code\ PL\:h14,JetBrains\ Mono\:h14,Hack\:h14,Consolas\:h14
+elseif has('gui_gtk')
+    " Cannot specify more than one font in GTK
+    set guifont=Consolas\ 14
+endif
 
 set t_Co=256
 set encoding=utf8

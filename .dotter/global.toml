@@ -28,12 +28,10 @@ vimrc = "~/.vimrc"
 vim_plug = "~/.vim/autoload/plug.vim"
 
 [nvim.files]
-vimrc = "~/.config/nvim/init.vim"
-vim_plug = "~/.local/share/nvim/site/autoload/plug.vim"
+nvim = { target = "~/.config/nvim", type = "symbolic", recurse = false }
 
 [tmux.files]
 tmux_conf = "~/.config/tmux/tmux.conf"
 
 [ripgrep.files]
 ripgrep = "~/.config/ripgrep/.ripgreprc"
-
