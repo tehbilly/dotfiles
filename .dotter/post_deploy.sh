@@ -7,7 +7,8 @@ if ! command -v rustup >/dev/null 2>&1; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --profile default -y
     export PATH="${HOME}/.cargo/bin:${PATH}"
 else
-    rustup self update
+    # This command can fail if rustup is installed using a package manager
+    rustup self update || true
     rustup update
 fi
 
