@@ -15,13 +15,6 @@ shopt -s histappend
 export HISTCONTROL="${HISTCONTROL}${HISTCONTROL+,}ignoreboth"
 export PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND+;}history -a"
 
-# PS1 / Promp
-# 256 color code (replace ### with color code): \[\033[38;5;###m\]
-_pbg="\[$(tput setaf 240)\]"
-_pfg="\[$(tput setaf 248)\]"
-_reset="\[$(tput sgr0)\]"
-export PS1="${_pbg}[${_pfg}\u${_pbg}@${_pfg}\H${_pbg} ${_pfg}\w${_pbg}]${_pfg}\\$ ${_reset}"
-
 # Completions
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
 
@@ -77,3 +70,31 @@ export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep/.ripgreprc"
 # If we have pdedupe available, use it to clean up our PATH
 # -e excludes paths that are added but don't exist
 command -v pdedupe > /dev/null 2>&1 && export PATH=$(pdedupe -e)
+
+# Use starship if available
+if command -v starship >/dev/null 2>&1; then
+    eval -- "$(/usr/sbin/starship init bash --print-full-init)"
+else
+    # PS1 / Promp
+    # 256 color code (replace ### with color code): \[\033[38;5;###m\]
+    _pbg="\[$(tput setaf 240)\]"
+    _pfg="\[$(tput setaf 248)\]"
+    _reset="\[$(tput sgr0)\]"
+    export PS1="${_pbg}[${_pfg}\u${_pbg}@${_pfg}\H${_pbg} ${_pfg}\w${_pbg}]${_pfg}\\$ ${_reset}"
+fi
+
+# Start zellij if not already started
+if command -v zellij >/dev/null 2>&1; then
+    export ZELLIJ_AUTO_ATTACH="true"
+    if [[ -z "$ZELLIJ" ]]; then
+        if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+            zellij attach -c
+        else
+            zellij
+        fi
+
+        if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+            exit
+        fi
+    fi
+fi

@@ -9,30 +9,30 @@ if ! command -v rustup >/dev/null 2>&1; then
 else
     # This command can fail if rustup is installed using a package manager
     rustup self update || true
-    rustup update
+    rustup update || true
 fi
 
 # Install commands managed by cargo
 if command -v cargo >/dev/null 2>&1; then
     if ! command -v cargo-install-update >/dev/null 2>&1; then
-        cargo install cargo-update
+        cargo install --locked cargo-update
     fi
     if ! command -v dotter >/dev/null 2>&1; then
-        cargo install dotter
+        cargo install --locked dotter
     fi
     if ! command -v exa >/dev/null 2>&1; then
-        cargo install exa
+        cargo install --locked exa
     fi
     if ! command -v fd >/dev/null 2>&1; then
-        cargo install fd-find
+        cargo install --locked fd-find
     fi
     if ! command -v hyperfine >/dev/null 2>&1; then
-        cargo install hyperfine
+        cargo install --locked hyperfine
     fi
     if ! command -v lsd >/dev/null 2>&1; then
-        cargo install lsd
+        cargo install --locked lsd
     fi
     if ! command -v rg >/dev/null 2>&1; then
-        cargo install ripgrep
+        cargo install --locked ripgrep
     fi
 fi

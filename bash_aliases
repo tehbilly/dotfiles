@@ -22,15 +22,10 @@ if command -v aria2c >/dev/null 2>&1; then
     alias wget="aria2c"
 fi
 
-# Use bat over cat when available
-if command -v bat >/dev/null 2>&1; then
-    alias cat="bat"
-fi
-
 # Directory listing
 if command -v lsd >/dev/null 2>&1; then
     alias ls="lsd"
-    alias ll="lsd -hal --icon=never"
+    alias ll="lsd -hal"
 elif command -v exa >/dev/null 2>&1; then
 	alias ls="exa"
 	alias ll="exa -lagh"

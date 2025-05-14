@@ -38,7 +38,7 @@ function Install-CargoCommand {
     process {
         if (!(Get-Command -ErrorAction SilentlyContinue $Command)) {
             Write-Host "Installing $Command"
-            cargo install $Crate
+            cargo install --locked $Crate
         }
     }
 }

@@ -3,8 +3,10 @@ return {
   "hrsh7th/nvim-cmp",
 
   -- Until https://github.com/hrsh7th/nvim-cmp/issues/1877 is resolved
-  commit = "b356f2c",
+  commit = "b356f2c80cb6c5bae2a65d7f9c82dd5c3fdd6038",
   pin = true,
+  -- Disabled while I try out blink
+  enabled = false,
 
   lazy = false,
   priority = 100,

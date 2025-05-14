@@ -7,8 +7,9 @@ return {
   require("plugins.telescope"),
   require("plugins.comments"),
   require("plugins.which-key"),
-  -- LSP plugins
+  -- LSP/Completion plugins
   require("plugins.lsp"),
+  require("plugins.blink"),
   require("plugins.cmp"),
 
   -- Pending plugins
