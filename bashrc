@@ -73,7 +73,7 @@ command -v pdedupe > /dev/null 2>&1 && export PATH=$(pdedupe -e)
 
 # Use starship if available
 if command -v starship >/dev/null 2>&1; then
-    eval -- "$(/usr/sbin/starship init bash --print-full-init)"
+    eval -- "$(starship init bash --print-full-init)"
 else
     # PS1 / Promp
     # 256 color code (replace ### with color code): \[\033[38;5;###m\]
@@ -83,18 +83,3 @@ else
     export PS1="${_pbg}[${_pfg}\u${_pbg}@${_pfg}\H${_pbg} ${_pfg}\w${_pbg}]${_pfg}\\$ ${_reset}"
 fi
 
-# Start zellij if not already started
-if command -v zellij >/dev/null 2>&1; then
-    export ZELLIJ_AUTO_ATTACH="true"
-    if [[ -z "$ZELLIJ" ]]; then
-        if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-            zellij attach -c
-        else
-            zellij
-        fi
-
-        if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-            exit
-        fi
-    fi
-fi
