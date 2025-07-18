@@ -2,19 +2,20 @@
 return {
   "hrsh7th/nvim-cmp",
 
+  -- Disabled while I try out blink
+  enabled = false,
+
   -- Until https://github.com/hrsh7th/nvim-cmp/issues/1877 is resolved
   commit = "b356f2c80cb6c5bae2a65d7f9c82dd5c3fdd6038",
   pin = true,
-  -- Disabled while I try out blink
-  enabled = false,
 
   lazy = false,
   priority = 100,
   dependencies = {
     "neovim/nvim-lspconfig", -- Used by cmp-nvim-lsp
-    "onsails/lspkind.nvim",  -- vscode-like pictograms
-    "hrsh7th/cmp-nvim-lsp",  -- lsp source
-    "hrsh7th/cmp-buffer",    -- buffer source
+    "onsails/lspkind.nvim", -- vscode-like pictograms
+    "hrsh7th/cmp-nvim-lsp", -- lsp source
+    "hrsh7th/cmp-buffer", -- buffer source
     -- "hrsh7th/cmp-path", -- path source
   },
   config = function()
