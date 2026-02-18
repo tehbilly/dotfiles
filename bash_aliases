@@ -15,7 +15,12 @@ else
 fi
 
 # This stops find from flooding stderr for permission issues
-alias find="find ${@} 2>/dev/null"
+if command -v fd >/dev/null 2>&1; then
+    alias find="fd --hidden --no-ignore --follow --exclude .git"
+else
+    # Use find with error suppression for permission issues
+    alias find="find ${@} 2>/dev/null"
+fi
 
 # Use aria2c over wget if available
 if command -v aria2c >/dev/null 2>&1; then
@@ -23,12 +28,12 @@ if command -v aria2c >/dev/null 2>&1; then
 fi
 
 # Directory listing
-if command -v lsd >/dev/null 2>&1; then
+if command -v eza >/dev/null 2>&1; then
+	alias ls="eza"
+	alias ll="eza -lagh"
+elif command -v lsd >/dev/null 2>&1; then
     alias ls="lsd"
     alias ll="lsd -hal"
-elif command -v exa >/dev/null 2>&1; then
-	alias ls="exa"
-	alias ll="exa -lagh"
 else
     alias ll="ls -hal"
 fi

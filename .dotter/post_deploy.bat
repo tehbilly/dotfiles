@@ -1,1 +1,1 @@
-pwsh -File .dotter/post_deploy.ps1
+@REM pwsh -File .dotter/post_deploy.ps1

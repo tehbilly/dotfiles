@@ -2,16 +2,10 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "j-hui/fidget.nvim", opts = {} }, -- LSP feedback
+    -- { "saghen/blink.cmp" }, -- Completions
   },
   -- Use config function to do complex setup
   config = function()
-    local capabilities = nil
-    if pcall(require, "cmp_nvim_lsp") then
-      capabilities = require("cmp_nvim_lsp").default_capabilities()
-    end
-
-    local lspconfig = require("lspconfig")
-
     -- TODO: Check for servers before enabling them
     local servers = {
       bashls = true,
@@ -57,27 +51,14 @@ return {
       rust_analyzer = true,
     }
 
-    -- local to_install = vim.tbl_filter(function(key)
-    --   local t = servers[key]
-    --   if type(t) == "table" then
-    --     return not t.manual_install
-    --   elseif type(t) == "boolean" then
-    --     return t
-    --   end
-    --   -- TODO: Log warning?
-    --   return false
-    -- end, vim.tbl_keys(servers))
-
     -- Setup the LSP servers
     for name, cfg in pairs(servers) do
       if cfg == true then
         cfg = {}
       end
-      cfg = vim.tbl_deep_extend("force", {}, {
-        capabilities = capabilities,
-      }, cfg)
 
-      lspconfig[name].setup(cfg)
+      vim.lsp.config(name, cfg)
+      vim.lsp.enable(name)
     end
   end,
 }

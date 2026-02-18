@@ -3,6 +3,7 @@
 [user]
     name = William McGann
     email = contact@williammcgann.com
+	signingkey = F28ED0EC31B3EC59
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg = !"git lg1"
@@ -11,6 +12,20 @@
     diffstat=diff --stat -r
 [url "git@github.com:"]
     insteadOf = https://github.com/
-[url "git@gitlab.com:"]
-    insteadOf = https://gitlab.com/
+# [url "git@gitlab.com:"]
+#     insteadOf = https://gitlab.com/
 
+[push]
+	autoSetupRemote = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg]
+	program = C:\\Users\\wmcgann\\scoop\\apps\\gpg4win\\current\\GnuPG\\bin\\gpg.exe
+[credential "helperselector"]
+	selected = manager
+[credential "https://huggingface.co"]
+	provider = generic
+[core]
+	autocrlf = input
