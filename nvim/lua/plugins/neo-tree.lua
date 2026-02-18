@@ -13,15 +13,6 @@ return {
         visible = true,
       },
     },
-    -- event_handlers = {
-    --   { -- TODO: Add 'neo_tree_buffer_leave' handler to restore cursor
-    --     event = 'neo_tree_buffer_enter',
-    --     handler = function()
-    --       -- This effectively hides the cursor
-    --       vim.cmd('highlight! Cursor blend=100')
-    --     end
-    --   },
-    -- },
     source_selector = {
       winbar = false,
       statusline = true,
@@ -29,8 +20,6 @@ return {
   },
   config = function(plugin, opts)
     require("neo-tree").setup(opts)
-    local fidget = require("fidget")
-    fidget.notify("Neo tree setup maybe?")
 
     vim.keymap.set("n", "<leader>n", function()
       local reveal_file = vim.fn.expand("%:p")

@@ -4,25 +4,23 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   opts = {},
-  config = function(plugin, opts)
-    local mason = require("mason")
-    local tool_installer = require("mason-tool-installer")
+  config = function(_, opts)
+    require("mason").setup(opts)
 
-    mason.setup(opts)
-
-    tool_installer.setup({
+    require("mason-tool-installer").setup({
       ensure_installed = {
         -- bash
         "shfmt",
         "bash-language-server",
         -- lua
-        -- "emmylua_ls"
         "lua-language-server",
         "stylua",
         -- rust
         "rust-analyzer",
         -- typescript
         "deno",
+        -- zig
+        "zls",
       },
     })
   end,

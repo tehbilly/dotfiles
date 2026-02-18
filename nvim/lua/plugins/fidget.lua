@@ -1,5 +1,5 @@
--- Provides LSP feedback
 return {
   "j-hui/fidget.nvim",
+  event = "LspAttach",
   opts = {},
 }

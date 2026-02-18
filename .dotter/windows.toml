@@ -1,4 +1,0 @@
-[nvim.files]
-nvim = { target = "~/AppData/Local/nvim", type = "symbolic", recurse = false }
-# nvim_init_lua = "~/AppData/Local/nvim/init.lua"
-# vim_plug = "~/AppData/Local/nvim-data/site/autoload/plug.vim"

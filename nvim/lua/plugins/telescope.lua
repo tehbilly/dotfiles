@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  event = "VeryLazy",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -22,10 +23,10 @@ return {
 
     local builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", "<leader>fd", builtin.find_files)
-    vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-    vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
-    vim.keymap.set("n", "<leader>gw", builtin.grep_string)
+    vim.keymap.set("n", "<leader>fd", builtin.find_files, { desc = "Find files" })
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
+    vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+    vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "Search in buffer" })
+    vim.keymap.set("n", "<leader>gw", builtin.grep_string, { desc = "Grep word under cursor" })
   end,
 }

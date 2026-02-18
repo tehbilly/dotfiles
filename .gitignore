@@ -1,4 +1,2 @@
-.dotter/local.toml
-.dotter/cache.toml
-.dotter/cache
-
+# Neovim
+nvim/lazy-lock.json

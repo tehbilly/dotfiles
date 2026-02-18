@@ -1,0 +1,46 @@
+right_format = '$memory_usage'
+
+[aws]
+disabled = true
+
+[cmd_duration]
+disabled = false
+min_time = 100
+show_milliseconds = true
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[git_metrics]
+disabled = false
+
+[dotnet]
+detect_extensions = [ "csproj", "fsproj", "xproj", "sln" ]
+
+[python]
+disabled = true
+
+[username]
+show_always = false
+format = '[$user]($style)@'
+
+[hostname]
+ssh_only = true
+trim_at = ''
+format = '@[$ssh_symbol$hostname]($style) '
+
+[directory]
+truncate_to_repo = true
+# truncation_symbol = '…/'
+use_os_path_sep = false
+repo_root_style = "bold green"
+
+[memory_usage]
+disabled = false
+threshold = -1
+format = '$symbol[${ram}]($style) '
+
+[shell]
+disabled = false
+style = 'cyan'
+powershell_indicator = '>_'

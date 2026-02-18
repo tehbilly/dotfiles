@@ -1,31 +1,56 @@
 [init]
     defaultBranch = main
+
 [user]
     name = William McGann
     email = contact@williammcgann.com
-	signingkey = F28ED0EC31B3EC59
+
+[include]
+    # Machine-specific overrides (gpg.program, credential helpers, etc.)
+    # This file is gitignored and must be created per-machine.
+    path = ~/.gitconfig.local
+
+[includeIf "gitdir:~/work/"]
+    # Work-specific overrides (user.email, signing key, etc.)
+    # Missing files are silently ignored by git.
+    path = ~/.gitconfig.work
+
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg = !"git lg1"
-    panic = !tar cvf ~/git_panic.tar .
     lc = log ORIG_HEAD.. --stat --no-merges
-    diffstat=diff --stat -r
+    diffstat = diff --stat -r
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    amend = commit --amend --no-edit
+    wip = !git add -A && git commit -m 'WIP'
+
 [url "git@github.com:"]
     insteadOf = https://github.com/
-# [url "git@gitlab.com:"]
-#     insteadOf = https://gitlab.com/
+
+[core]
+    autocrlf = input
 
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[fetch]
+    prune = true
+
 [commit]
-	gpgsign = true
+    gpgsign = true
+
 [tag]
-	gpgsign = true
-[gpg]
-	program = C:\\Users\\wmcgann\\scoop\\apps\\gpg4win\\current\\GnuPG\\bin\\gpg.exe
-[credential "helperselector"]
-	selected = manager
-[credential "https://huggingface.co"]
-	provider = generic
-[core]
-	autocrlf = input
+    gpgsign = true
+
+[diff]
+    algorithm = histogram
+
+[merge]
+    conflictstyle = zdiff3
+
+[rerere]
+    enabled = true
