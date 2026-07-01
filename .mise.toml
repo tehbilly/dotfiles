@@ -1,5 +1,8 @@
 [tools]
-"github:tehbilly/df" = "latest"
 lua-language-server = "latest"
 shellcheck = "latest"
 stylua = "latest"
+
+[tools."github:tehbilly/df"]
+version = "latest"
+minimum_release_age = "0s"
