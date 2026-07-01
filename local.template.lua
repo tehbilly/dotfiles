@@ -1,26 +1,26 @@
--- local.lua — machine-specific configuration
--- Do not commit this file (it is listed in .gitignore).
---
--- Activate modules for this machine and override variables as needed.
--- The dotfiles global provides helpers for conditional configuration:
---
---   dotfiles.os()                            -> "linux", "macos", "windows", …
---   dotfiles.hostname()                      -> machine hostname
---   dotfiles.which("nvim")                   -> path to binary, or nil
---   dotfiles.env("VAR")                      -> env var value, or nil
---   dotfiles.env("VAR", "default_if_unset")  -> env var value, or default_if_unset
+-- This file can be used as a template when bootstrapping a new machine
 
+---@type dotfiles
+local df = require("dotfiles")
+
+-- Enabled modules
 local modules = {
-    "git",
-    "nvim",
-    "wezterm",
-    "starship",
-    -- "pwsh",
-    -- "bash",
+	"git",
+	"nvim",
+	"wezterm",
+	"starship",
 }
+
+-- Default shell setups depending on OS
+if df.os() == "windows" then
+	table.insert(modules, "pwsh")
+else
+	table.insert(modules, "bash")
+end
+
 local vars = {}
 
 return {
-    vars = vars,
-    modules = modules,
+	vars = vars,
+	modules = modules,
 }

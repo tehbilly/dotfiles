@@ -37,6 +37,7 @@ local path = {}
 ---@param base string The base/root directory
 ---@param child string The child path to add
 ---@param ... string More paths may be joined together
+---@return string
 function path.join(base, child, ...) end
 
 dotfiles.path = path

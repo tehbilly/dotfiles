@@ -79,7 +79,6 @@ if df.os() == "windows" then
 
     modules.pwsh.files = {
         { src = "shell/pwsh/profile.ps1", dst = profile },
-        { src = "shell/pwsh/profile.d",   dst = df.path.join(parent, "profile.d") },
     }
 end
 
