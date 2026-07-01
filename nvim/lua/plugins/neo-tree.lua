@@ -3,11 +3,27 @@ return {
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
+    -- Optional deps
+    "nvim-tree/nvim-web-devicons",
+    -- Image preview
+    "folke/snacks.nvim",
+    -- LSP for commands
+    "antosha417/nvim-lsp-file-operations",
+    -- Window picker
+    "s1n7ax/nvim-window-picker",
+
   },
   opts = {
     close_if_last_window = true,
+    window = {
+        position = "float",
+        popup = {
+            size = { height = "80%", width = "80%" },
+            position = "50%",
+            border = "rounded",
+        },
+    },
     filesystem = {
       filtered_items = {
         visible = true,
@@ -17,9 +33,21 @@ return {
       winbar = false,
       statusline = true,
     },
+    event_handlers = {
+        {
+            event = "file_opened",
+            handler = function(file_path)
+                -- auto-close neo-tree
+                require("neo-tree.command").execute({ action = "close" })
+            end,
+        },
+    },
   },
   config = function(plugin, opts)
     require("neo-tree").setup(opts)
+
+    -- Force neo-tree floating border background to be transparent
+    vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", { bg = "NONE" })
 
     vim.keymap.set("n", "<leader>n", function()
       local reveal_file = vim.fn.expand("%:p")

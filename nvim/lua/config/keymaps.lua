@@ -24,3 +24,12 @@ map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 -- Better indenting (stay in visual mode)
 map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
+
+-- Things that should work but often don't
+map("n", "<leader>q", function()
+    vim.cmd("Neotree close")
+    vim.cmd("confirm qall") -- confirms if modified buffers
+    end,
+    { desc = "Close quickfix and location lists" }
+)
+map('i', '<C-H>', '<C-W>', { noremap = true, desc = "Delete previous word" })

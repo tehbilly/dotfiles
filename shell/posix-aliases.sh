@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+# shellcheck shell=bash
+
 # Aliases — prefer modern CLI tools with graceful fallbacks
 
 # nvim > vim
@@ -36,4 +37,9 @@ elif command -v lsd >/dev/null 2>&1; then
     alias ll="lsd -hal"
 else
     alias ll="ls -hal"
+fi
+
+# zoxide (smarter cd)
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init bash)"
 fi

@@ -1,4 +1,4 @@
 return {
-  plugin = "RRethy/base16-nvim",
-  name = "base16-tomorrow-night",
+  plugin = "rebelot/kanagawa.nvim",
+  name = "kanagawa-dragon",
 }

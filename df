@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+TOOL="github:tehbilly/df"
+TOOL_VERSION="latest"
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+MISE_BIN="${SCRIPT_DIR}/bin/mise"
+
+exec "$MISE_BIN" exec "${TOOL}@${TOOL_VERSION}" -- df "$@"

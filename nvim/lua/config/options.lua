@@ -36,3 +36,5 @@ vim.diagnostic.config({
   virtual_text = { spacing = 4 },
   severity_sort = true,
 })
+
+vim.o.exrc = true

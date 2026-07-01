@@ -1,5 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = {
+    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
+  },
   config = function()
     local servers = {
       bashls = true,
@@ -19,7 +23,16 @@ return {
           },
         },
       },
-      rust_analyzer = true,
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = { 
+              buildScripts = { enable = true },
+            },
+            procMacro = { enable = true },
+          },
+        },
+      },
       denols = true,
       zls = true,
     }
@@ -32,10 +45,14 @@ return {
       denols = "deno",
     }
 
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
     for name, cfg in pairs(servers) do
       if cfg == true then
         cfg = {}
       end
+
+      cfg.capabilities = capabilities
 
       -- Only enable servers whose binary is available
       local bin = server_binaries[name] or name

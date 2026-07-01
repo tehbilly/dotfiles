@@ -1,2 +1,8 @@
-# Neovim
-nvim/lazy-lock.json
+# df backups
+/.backups
+# VS Code
+.vscode/
+# machine-specific config
+/local.lua
+# local mise dir
+/.mise

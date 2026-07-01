@@ -2,8 +2,8 @@
     defaultBranch = main
 
 [user]
-    name = William McGann
-    email = contact@williammcgann.com
+    name = {{ user_name }}
+    email = {{ user_email }}
 
 [include]
     # Machine-specific overrides (gpg.program, credential helpers, etc.)
@@ -25,11 +25,10 @@
     amend = commit --amend --no-edit
     wip = !git add -A && git commit -m 'WIP'
 
-[url "git@github.com:"]
-    insteadOf = https://github.com/
-
+{% if core_autocrlf is defined %}
 [core]
-    autocrlf = input
+    autocrlf = {{ core_autocrlf }}
+{% endif %}
 
 [push]
     autoSetupRemote = true
