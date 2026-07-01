@@ -19,45 +19,47 @@ local just_picker = function(opts)
     table.insert(recipes, recipe)
   end
 
-  t_pickers.new(opts, {
-    prompt_title = "Just Recipes",
-    finder = t_finders.new_table({
-      results = recipes,
-    }),
-    sorter = t_config.generic_sorter(opts),
+  t_pickers
+    .new(opts, {
+      prompt_title = "Just Recipes",
+      finder = t_finders.new_table({
+        results = recipes,
+      }),
+      sorter = t_config.generic_sorter(opts),
 
-    -- previewer = t_preview.new_termopen_previewer({
-    --   get_command = function(entry)
-    --     return { "just", "--show", entry.value }
-    --   end,
-    -- }),
-    previewer = t_preview.new_buffer_previewer({
-      title = "Recipe Definition",
-      define_preview = function(self, entry, status)
-        -- Pipe output to the preview buffer
-        vim.fn.jobstart({ "just", "--show", entry.value }, {
-          on_stdout = function(_, data)
-            if data then
-              vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, data)
-            end
-          end,
-          stdout_buffered = true,
-        })
+      -- previewer = t_preview.new_termopen_previewer({
+      --   get_command = function(entry)
+      --     return { "just", "--show", entry.value }
+      --   end,
+      -- }),
+      previewer = t_preview.new_buffer_previewer({
+        title = "Recipe Definition",
+        define_preview = function(self, entry, status)
+          -- Pipe output to the preview buffer
+          vim.fn.jobstart({ "just", "--show", entry.value }, {
+            on_stdout = function(_, data)
+              if data then
+                vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, data)
+              end
+            end,
+            stdout_buffered = true,
+          })
 
-        vim.api.nvim_set_option_value("filetype", "just", { buf = self.state.bufnr })
+          vim.api.nvim_set_option_value("filetype", "just", { buf = self.state.bufnr })
+        end,
+      }),
+
+      attach_mappings = function(prompt_bufnr, map)
+        t_actions.select_default:replace(function()
+          t_actions.close(prompt_bufnr)
+          -- local select = t_action_state.get_selected_entry()
+          -- vim.cmd("split | term just " .. select.value)
+          -- vim.cmd("startinsert")
+        end)
+        return true
       end,
-    }),
-
-    attach_mappings = function(prompt_bufnr, map)
-      t_actions.select_default:replace(function()
-        t_actions.close(prompt_bufnr)
-        -- local select = t_action_state.get_selected_entry()
-        -- vim.cmd("split | term just " .. select.value)
-        -- vim.cmd("startinsert")
-      end)
-      return true
-    end,
-  }):find()
+    })
+    :find()
 end
 
 return {

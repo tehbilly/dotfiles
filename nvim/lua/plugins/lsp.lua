@@ -26,7 +26,7 @@ return {
       rust_analyzer = {
         settings = {
           ["rust-analyzer"] = {
-            cargo = { 
+            cargo = {
               buildScripts = { enable = true },
             },
             procMacro = { enable = true },

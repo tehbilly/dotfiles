@@ -12,17 +12,16 @@ return {
     "antosha417/nvim-lsp-file-operations",
     -- Window picker
     "s1n7ax/nvim-window-picker",
-
   },
   opts = {
     close_if_last_window = true,
     window = {
-        position = "float",
-        popup = {
-            size = { height = "80%", width = "80%" },
-            position = "50%",
-            border = "rounded",
-        },
+      position = "float",
+      popup = {
+        size = { height = "80%", width = "80%" },
+        position = "50%",
+        border = "rounded",
+      },
     },
     filesystem = {
       filtered_items = {
@@ -34,13 +33,13 @@ return {
       statusline = true,
     },
     event_handlers = {
-        {
-            event = "file_opened",
-            handler = function(file_path)
-                -- auto-close neo-tree
-                require("neo-tree.command").execute({ action = "close" })
-            end,
-        },
+      {
+        event = "file_opened",
+        handler = function(file_path)
+          -- auto-close neo-tree
+          require("neo-tree.command").execute({ action = "close" })
+        end,
+      },
     },
   },
   config = function(plugin, opts)
