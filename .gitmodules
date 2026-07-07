@@ -1,3 +1,3 @@
 [submodule ".luarc/stubs/wezterm-types"]
 	path = .luarc/stubs/wezterm-types
-	url = git@github.com:DrKJeff16/wezterm-types
+	url = https://github.com/DrKJeff16/wezterm-types.git
