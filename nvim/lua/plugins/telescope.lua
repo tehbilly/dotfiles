@@ -123,7 +123,7 @@ return {
     vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Search commands" })
     -- vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "List items in quickfix list" })
     vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "List vim regisers, pastes content when selected" })
-    vim.keymap.set("n", "<leader>fp", builtin.pickers, { desc = "Lists pickers" })
+    vim.keymap.set("n", "<leader>fP", builtin.pickers, { desc = "Lists previous pickers (resume)" })
     vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "List keymaps" })
     vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "List recently opened files" })
     vim.keymap.set("n", "<leader>fp", builtin.builtin, { desc = "List built-in pickers" })

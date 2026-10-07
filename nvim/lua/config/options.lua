@@ -24,6 +24,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.cursorline = true
 vim.opt.scrolloff = 8
+vim.o.winborder = "rounded"
 
 -- Tabs & indentation
 vim.opt.expandtab = true
@@ -32,7 +33,6 @@ vim.opt.tabstop = 4
 
 -- Diagnostics
 vim.diagnostic.config({
-  float = { border = "rounded" },
   virtual_text = { spacing = 4 },
   severity_sort = true,
 })

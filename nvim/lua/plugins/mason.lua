@@ -12,6 +12,10 @@ return {
         -- bash
         "shfmt",
         "bash-language-server",
+        -- c
+        "clangd",
+        -- go
+        "gopls",
         -- lua
         "lua-language-server",
         "stylua",

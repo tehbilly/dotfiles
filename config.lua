@@ -27,7 +27,7 @@ local modules = {
         },
     },
 
-    -- Shell: bash
+    -- Shells
     bash = {
         files = {
             { src = "shell/.inputrc",         dst = ".inputrc" },
@@ -36,7 +36,18 @@ local modules = {
         },
     },
 
-    -- Shell: pwsh
+    zsh = {
+        files = {
+            { src = "shell/.zshrc", dst = ".zshrc" },
+        },
+    },
+
+    fish = {
+        files = {
+            { src = "shell/fish/config.fish", dst = df.path.join(".config", "fish", "config.fish") },
+        },
+    },
+
     pwsh = {
         files = {
             {

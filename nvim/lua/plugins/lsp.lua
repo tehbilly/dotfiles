@@ -5,8 +5,9 @@ return {
     "mason-org/mason-lspconfig.nvim",
   },
   config = function()
+    -- Servers are installed by mason.nvim (see mason.lua) and enabled by mason-lspconfig's `automatic_enable`.
+    -- This table only holds per-server overrides.
     local servers = {
-      bashls = true,
       clangd = {
         init_options = { clangdFileStatus = true },
         filetypes = { "c" },
@@ -33,33 +34,12 @@ return {
           },
         },
       },
-      denols = true,
-      zls = true,
     }
 
-    -- Binary names that differ from the LSP server name
-    local server_binaries = {
-      bashls = "bash-language-server",
-      lua_ls = "lua-language-server",
-      rust_analyzer = "rust-analyzer",
-      denols = "deno",
-    }
-
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
 
     for name, cfg in pairs(servers) do
-      if cfg == true then
-        cfg = {}
-      end
-
-      cfg.capabilities = capabilities
-
-      -- Only enable servers whose binary is available
-      local bin = server_binaries[name] or name
-      if vim.fn.executable(bin) == 1 then
-        vim.lsp.config(name, cfg)
-        vim.lsp.enable(name)
-      end
+      vim.lsp.config(name, cfg)
     end
   end,
 }

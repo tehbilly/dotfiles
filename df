@@ -3,4 +3,4 @@
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 MISE_BIN="${SCRIPT_DIR}/bin/mise"
 
-exec "$MISE_BIN" exec github:tehbilly/df -- df "$@"
+exec "$MISE_BIN" exec github:tehbilly/df -- df --source-dir "$SCRIPT_DIR" "$@"

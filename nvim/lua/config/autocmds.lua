@@ -40,22 +40,3 @@ autocmd("LspAttach", {
     map("<leader>ws", vim.lsp.buf.workspace_symbol, "Workspace symbols")
   end,
 })
-
--- Configure LSP hover/signature borders
-autocmd("LspAttach", {
-  group = augroup("lsp-borders", { clear = true }),
-  once = true,
-  callback = function()
-    vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
-      config = config or {}
-      config.border = "rounded"
-      return vim.lsp.handlers.hover(_, result, ctx, config)
-    end
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = function(_, result, ctx, config)
-      config = config or {}
-      config.border = "rounded"
-      return vim.lsp.handlers.signatureHelp(_, result, ctx, config)
-    end
-  end,
-})

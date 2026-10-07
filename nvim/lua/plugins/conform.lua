@@ -3,9 +3,9 @@ return {
   event = "BufWritePre",
   keys = {
     {
-      "<leader>f",
+      "<leader>cf",
       function()
-        require("conform").format({ async = true, lsp_fallback = true })
+        require("conform").format({ async = true, lsp_format = "fallback" })
       end,
       mode = "",
       desc = "[F]ormat buffer",
@@ -17,11 +17,13 @@ return {
       local disable_filetypes = { c = true, cpp = true }
       return {
         timeout_ms = 500,
-        lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+        lsp_format = disable_filetypes[vim.bo[bufnr].filetype] and "never" or "fallback",
       }
     end,
     formatters_by_ft = {
       lua = { "stylua" },
+      sh = { "shfmt" },
+      bash = { "shfmt" },
     },
   },
 }
